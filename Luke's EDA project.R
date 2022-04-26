@@ -150,3 +150,90 @@ ggsave("Density_Reef_Ray_Global.png",
        width = 8,
        units = "in",
        dpi = 400)
+
+# Density Plot for Oceanic Rays Global Sightings
+ggplot() +
+  geom_map(
+    data = world, map = world,
+    aes(long, lat, map_id = region)
+  ) +
+  geom_density_2d_filled(
+    data = Oceanic_Ray,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      # color = season
+    ),
+    alpha = .5
+  ) +
+  coord_equal()+
+  facet_wrap(~season,ncol = 2) +
+  guides(fill = "none") +
+  labs(
+    title = "Oceanic Ray Global Sightings",
+    caption="Lighter colors indicate denser sightings"
+  )
+
+ggsave("Density_Oceanic_Ray_Global.png",
+  height = 6,
+  width = 8,
+  units = "in",
+  dpi = 400)
+
+# Density Plot for Reef Rays Australia
+ggplot() +
+  geom_map(
+    data = world_australia, map = world_australia,
+    aes(long, lat, map_id = region)
+  ) +
+  geom_density_2d_filled(
+    data = Reef_Ray_australia,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      # color = season
+    ),
+    alpha = .5
+  ) +
+  coord_equal()+
+  facet_wrap(~season,ncol = 2) +
+  guides(fill = "none") +
+  labs(
+    title = "Reef Rays Australia Sightings",
+    caption="Lighter colors indicate denser sightings"
+  )
+
+ggsave("Density_Reef_Ray_Australia.png",
+       height = 6,
+       width = 8,
+       units = "in",
+       dpi = 400)
+
+# Density Breeding Seasons for Reef Rays
+ggplot() +
+  geom_map(
+    data = world_australia, map = world_australia,
+    aes(long, lat, map_id = region)
+  ) +
+  geom_density_2d_filled(
+    data = Reef_Ray_australia,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      # color = season
+    ),
+    alpha = .5
+  ) +
+  coord_equal()+
+  facet_wrap(~breeding,ncol = 2) +
+  guides(fill = "none") +
+  labs(
+    title = "Density of Reef Ray Breeding Season",
+    caption="Lighter colors indicate denser sightings"
+  )
+
+ggsave("Density_Reef_Ray_Breeding.png",
+       height = 6,
+       width = 8,
+       units = "in",
+       dpi = 400)
