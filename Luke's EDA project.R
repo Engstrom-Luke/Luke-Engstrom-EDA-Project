@@ -48,19 +48,23 @@ ggplot() +
     data = world_australia, map = world_australia,
     aes(long, lat, map_id = region)
   ) +
-  geom_point(data = Reef_Ray_australia,
-             mapping = aes(x = longitude, y = latitude,
-                           shape = season,
-                           size = ".1",
-                           alpha = ".1"))+
+  geom_point(
+    data = Reef_Ray_australia,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      shape = season,
+      size = ".1",
+      alpha = ".1")
+    ) +
   coord_equal()+
   facet_wrap(~season,ncol = 2)
 
 ggsave("Reef_Ray_Australia.png",
-       height = 6,
-       width = 8,
-       units = "in",
-       dpi = 400)
+  height = 6,
+  width = 8,
+  units = "in",
+  dpi = 400)
 
 # Oceanic Ray World Map
 ggplot() +
@@ -68,19 +72,23 @@ ggplot() +
     data = world, map = world,
     aes(long, lat, map_id = region)
   ) +
-  geom_point(data = Oceanic_Ray,
-             mapping = aes(x = longitude, y = latitude,
-                           shape = season,
-                           size = ".1",
-                           alpha = ".1"))+
+  geom_point(
+    data = Oceanic_Ray,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      shape = season,
+      size = ".1",
+      alpha = ".1")
+    ) +
   coord_equal()+
   facet_wrap(~season,ncol = 2)
 
 ggsave("Oceanic_Ray.png",
-       height = 6,
-       width = 8,
-       units = "in",
-       dpi = 400)
+  height = 6,
+  width = 8,
+  units = "in",
+  dpi = 400)
 
 # Breeding Seasons for Reef Rays 
 ggplot() +
@@ -88,19 +96,23 @@ ggplot() +
     data = world_australia, map = world_australia,
     aes(long, lat, map_id = region)
   ) +
-  geom_point(data = Reef_Ray_australia,
-             mapping = aes(x = longitude, y = latitude,
-                           shape = season,
-                           size = ".1",
-                           alpha = ".1"))+
+  geom_point(
+    data = Reef_Ray_australia,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      shape = season,
+      size = ".1",
+      alpha = ".1")
+    ) +
   coord_equal()+
   facet_wrap(~breeding,ncol = 2)
 
 ggsave("Reef_Ray_Breeding.png",
-       height = 6,
-       width = 8,
-       units = "in",
-       dpi = 400)
+  height = 6,
+  width = 8,
+  units = "in",
+  dpi = 400)
 
 # Reef Ray World Map
 ggplot() +
@@ -108,19 +120,23 @@ ggplot() +
     data = world, map = world,
     aes(long, lat, map_id = region)
   ) +
-  geom_point(data = Reef_Ray,
-             mapping = aes(x = longitude, y = latitude,
-                           shape = season,
-                           size = ".1",
-                           alpha = ".1"))+
+  geom_point(
+    data = Reef_Ray,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      shape = season,
+      size = ".1",
+      alpha = ".1")
+    ) +
   coord_equal()+
   facet_wrap(~season,ncol = 2)
 
 ggsave("Reef_Ray_Global.png",
-       height = 6,
-       width = 8,
-       units = "in",
-       dpi = 400)
+  height = 6,
+  width = 8,
+  units = "in",
+  dpi = 400)
 
 # Density Plot for Reef Rays Global sightings
 ggplot() +
@@ -146,10 +162,10 @@ ggplot() +
   )
 
 ggsave("Density_Reef_Ray_Global.png",
-       height = 6,
-       width = 8,
-       units = "in",
-       dpi = 400)
+  height = 6,
+  width = 8,
+  units = "in",
+  dpi = 400)
 
 # Density Plot for Oceanic Rays Global Sightings
 ggplot() +
@@ -204,10 +220,10 @@ ggplot() +
   )
 
 ggsave("Density_Reef_Ray_Australia.png",
-       height = 6,
-       width = 8,
-       units = "in",
-       dpi = 400)
+  height = 6,
+  width = 8,
+  units = "in",
+  dpi = 400)
 
 # Density Breeding Seasons for Reef Rays
 ggplot() +
@@ -233,7 +249,7 @@ ggplot() +
   )
 
 ggsave("Density_Reef_Ray_Breeding.png",
-       height = 6,
-       width = 8,
-       units = "in",
-       dpi = 400)
+  height = 6,
+  width = 8,
+  units = "in",
+  dpi = 400)
