@@ -58,7 +58,11 @@ ggplot() +
       alpha = ".1")
     ) +
   coord_equal()+
-  facet_wrap(~season,ncol = 2)
+  facet_wrap(~season,ncol = 2) +
+  guides(fill = "none")+
+  labs(
+    title = "Reef Ray Australia Sightings"
+  )
 
 ggsave("Reef_Ray_Australia.png",
   height = 6,
@@ -82,7 +86,11 @@ ggplot() +
       alpha = ".1")
     ) +
   coord_equal()+
-  facet_wrap(~season,ncol = 2)
+  facet_wrap(~season,ncol = 2) +
+  guides(fill = "none")+
+  labs(
+    title = "Oceanic Ray Global Sightings"
+  )
 
 ggsave("Oceanic_Ray.png",
   height = 6,
@@ -106,7 +114,11 @@ ggplot() +
       alpha = ".1")
     ) +
   coord_equal()+
-  facet_wrap(~breeding,ncol = 2)
+  facet_wrap(~breeding,ncol = 2) +
+  guides(fill = "none")+
+  labs(
+    title = "Reef Ray Breeding Seasons"
+  )
 
 ggsave("Reef_Ray_Breeding.png",
   height = 6,
@@ -130,7 +142,11 @@ ggplot() +
       alpha = ".1")
     ) +
   coord_equal()+
-  facet_wrap(~season,ncol = 2)
+  facet_wrap(~season,ncol = 2) +
+  guides(fill = "none")+
+  labs(
+    title = "Reef Ray Global Sightings"
+  )
 
 ggsave("Reef_Ray_Global.png",
   height = 6,
