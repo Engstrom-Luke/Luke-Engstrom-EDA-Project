@@ -102,11 +102,11 @@ ggsave("Oceanic_Ray.png",
 # Breeding Seasons for Reef Rays 
 ggplot() +
   geom_map(
-    data = world_australia, map = world_australia,
+    data = world, map = world,
     aes(long, lat, map_id = region)
   ) +
   geom_point(
-    data = Reef_Ray_australia,
+    data = Reef_Ray,
     mapping = aes(
       x = longitude, 
       y = latitude,
@@ -245,11 +245,11 @@ ggsave("Density_Reef_Ray_Australia.png",
 # Density Breeding Seasons for Reef Rays
 ggplot() +
   geom_map(
-    data = world_australia, map = world_australia,
+    data = world, map = world,
     aes(long, lat, map_id = region)
   ) +
   geom_density_2d_filled(
-    data = Reef_Ray_australia,
+    data = Reef_Ray,
     mapping = aes(
       x = longitude, 
       y = latitude,

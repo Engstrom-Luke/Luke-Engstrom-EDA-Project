@@ -18,47 +18,47 @@ Affiliations: Minnesota State University of Moorhead
 
 ## Abstract
 
--   Manta ray migrate where the food is, which makes them hard to study
+-   Manta ray migrate where the food is, which makes them hard to study​
 
--   In addition, they are at risk from fisheries and bycatch (Stewart et al 2016)
+-   In addition, they are at risk from fisheries and bycatch (Stewart et al 2016)​
 
--   Using iNaturalist data to see if there are migration patterns
+-   Using iNaturalist data to see if there are migration patterns​
 
--   Then identifying breeding grounds of two different species of manta ray
+-   Then identifying breeding grounds of two different species of manta ray​
 
 -   With this information we propose to make these sites protected grounds
 
 ## Introduction
 
--   Manta ray are an elusive species, juveniles have never been studied in the wild (Stewart et al 2018)
+-   Manta ray are an elusive species, juveniles have never been studied in the wild (Stewart et al 2018)​
 
--   *Mobula birostris* (oceanic ray) and *Mobula alfredi* (reef ray) are both migratory species
+-   Mobula birostris (oceanic ray) and Mobula alfredi (reef ray) are both migratory species​
 
--   Reef Rays typically have their mating season from October to January (Simpkins 2013)
+-   Reef Rays typically have their mating season from October to January (Simpkins 2013)​
 
--   Oceanic Rays are considered year round, but it depends on what waters they are in (Manta Ray Reproduction 2018)
+-   Oceanic Rays are considered year-round, but it depends on what waters they are in (Manta Ray Reproduction 2018)​
 
 -   We are working to identify breeding grounds to propose marine protected areas
 
 ## Methods
 
--   Using iNaturalist data, a citizen science program used to catalog sightings of organisms
+-   Using iNaturalist data, a citizen science program used to catalog sightings of organisms​
 
--   Then cleaned up the data using rNat and tidyverse
+-   Then cleaned up the data using rNat and tidyverse​
 
--   We filtered the data to include species name, latitude, longitude, year, month, and day
+-   We filtered the data to include species name, latitude, longitude, year, month, and day​
 
--   Then made a map with the filtered data
+-   Then made a map with the filtered data​
 
 ## Results
 
--   Oceanic rays may have breeding grounds near the west coast of the US, Gulf of Mexico, New Zealand, Australia, and Indonesia
+-   Oceanic rays may have breeding grounds near the west coast of the US, Gulf of Mexico, New Zealand, Australia, and Indonesia​
 
--   Reef rays may have breeding grounds near India in the Maldives and Indonesia
+-   Reef rays may have breeding grounds near India in the Maldives and Indonesia​
 
--   Reef rays have higher sightings in winter near India in the Maldives and Indonesia
+-   Reef rays have higher sightings in winter near India in the Maldives and Indonesia​
 
-Figure 1. Map depicting Oceanic Ray sightings based off of the four seasons.
+Figure 1.
 
 ```{r Oceanic, echo=FALSE, message=FALSE, warning=FALSE}
 library(rinat)
@@ -67,30 +67,63 @@ indx <- setNames( rep(c('1:Winter', '2:Spring', '3:Summer',
                         '4:Fall'),each=3), c("12","01","02","03","04","05","06","07","08","09","10","11"))
 indx_breeding <- setNames( rep(c('Breeding Season', 'Non-Breeding Season','Non-Breeding Season'),each=4),
                   c("10","11","12","01","02","03","04","05","06","07","08","09"))
-Oceanic_Ray <- get_inat_obs(query = "Oceanic Manta Ray",maxresults = 1000) %>% 
-  select(scientific_name, time_observed_at, latitude, longitude) %>% 
-  filter(scientific_name == "Mobula birostris",time_observed_at != "") %>% 
-  mutate(
-    year = substr(time_observed_at,0,4),
-    month = substr(time_observed_at,6,7),
-    day = substr(time_observed_at,9,10), 
-    season = (indx[as.character(month)]))
-world <- map_data("world")
 ggplot() +
   geom_map(
     data = world, map = world,
     aes(long, lat, map_id = region)
   ) +
-  geom_point(data = Oceanic_Ray,
-             mapping = aes(x = longitude, y = latitude,
-                           color = season,
-                           size = ".1",
-                           alpha = ".1"))+
+  geom_point(
+    data = Oceanic_Ray,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      shape = season,
+      size = ".1",
+      alpha = ".1")
+    ) +
   coord_equal()+
-  facet_wrap(~season,ncol = 2)
+  facet_wrap(~season,ncol = 2) +
+  guides(fill = "none")+
+  labs(
+    title = "Oceanic Ray Global Sightings"
+  )
+
 ```
 
-Figure 2. Map depicting Reef Ray sightings based off of the four seasons.
+Figure 2.
+
+```{r Density of Oceanic Rays, echo=FALSE, message=FALSE, warning=FALSE}
+library(rinat)
+library(tidyverse)
+indx <- setNames( rep(c('1:Winter', '2:Spring', '3:Summer',
+                        '4:Fall'),each=3), c("12","01","02","03","04","05","06","07","08","09","10","11"))
+indx_breeding <- setNames( rep(c('Breeding Season', 'Non-Breeding Season','Non-Breeding Season'),each=4),
+                  c("10","11","12","01","02","03","04","05","06","07","08","09"))
+ggplot() +
+  geom_map(
+    data = world, map = world,
+    aes(long, lat, map_id = region)
+  ) +
+  geom_density_2d_filled(
+    data = Oceanic_Ray,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      # color = season
+    ),
+    alpha = .5
+  ) +
+  coord_equal()+
+  facet_wrap(~season,ncol = 2) +
+  guides(fill = "none") +
+  labs(
+    title = "Oceanic Ray Global Sightings",
+    caption="Lighter colors indicate denser sightings"
+  )
+
+```
+
+Figure 3.
 
 ```{r Reef four seasons, echo=FALSE, message=FALSE, warning=FALSE}
 library(rinat)
@@ -122,13 +155,21 @@ ggplot() +
     data = world_australia, map = world_australia,
     aes(long, lat, map_id = region)
   ) +
-  geom_point(data = Reef_Ray_australia,
-    mapping = aes(x = longitude, y = latitude,
-      color = season,
+  geom_point(
+    data = Reef_Ray_australia,
+    mapping = aes(
+      x = longitude, 
+      y = latitude,
+      shape = season,
       size = ".1",
-      alpha = ".1"))+
+      alpha = ".1")
+    ) +
   coord_equal()+
-  facet_wrap(~season,ncol = 2)
+  facet_wrap(~season,ncol = 2) +
+  guides(fill = "none")+
+  labs(
+    title = "Reef Ray Australia Sightings"
+  )
 ```
 
 Figure 3. Map depicting Reef Ray sightings during breeding and non breeding seasons.
@@ -176,7 +217,9 @@ Figure 4.
 
 ## Discussion
 
--   W
+-   Protected marine grounds could be set up in New Zealand, Australia, Indonesia, India, the west coast of the US, and the Gulf of Mexico​
+-   The Gulf of Mexico has become a hot spot for the Oceanic rays (Stewart et al 2018)​
+-   Our data support this because of the high density in the Gulf of Mexico​
 
 ## Refferences
 
