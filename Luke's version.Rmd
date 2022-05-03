@@ -4,27 +4,63 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 ```
 
-## GitHub Documents
+\## \*\*Using iNaturalist to Identify Breeding Locations of Manta Ray\*\*
 
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+Authors: Luke Engstrom
 
-## Including Code
+Co-Author: Dr. Christopher Merkord
 
-You can include R code in the document as follows:
+Affiliations: Minnesota State University of Moorhead
+
+\## Abstract
+
+\- Manta ray migrate where the food is, which makes them hard to study​
+
+\- In addition, they are at risk from fisheries and bycatch (Stewart et al 2016)​
+
+\- Using iNaturalist data to see if there are migration patterns​
+
+\- Then identifying breeding grounds of two different species of manta ray​
+
+\- With this information we propose to make these sites protected grounds
+
+\## Introduction
+
+\- Manta ray are an elusive species, juveniles have never been studied in the wild (Stewart et al 2018)​
+
+\- Mobula birostris (oceanic ray) and Mobula alfredi (reef ray) are both migratory species​
+
+\- Reef Rays typically have their mating season from October to January (Simpkins 2013)​
+
+\- Oceanic Rays are considered year-round, but it depends on what waters they are in (Manta Ray Reproduction 2018)​
+
+\- We are working to identify breeding grounds to propose marine protected areas
+
+\## Methods
+
+\- Using iNaturalist data, a citizen science program used to catalog sightings of organisms​
+
+\- Then cleaned up the data using rNat and tidyverse​
+
+\- We filtered the data to include species name, latitude, longitude, year, month, and day​
+
+\- Then made a map with the filtered data​
+
+\## Results
+
+\- Oceanic rays may have breeding grounds near the west coast of the US, Gulf of Mexico, New Zealand, Australia, and Indonesia​
+
+\- Reef rays may have breeding grounds near India in the Maldives and Indonesia​
+
+\- Reef rays have higher sightings in winter near India in the Maldives and Indonesia​
 
 ```{r cars}
 summary(cars)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
