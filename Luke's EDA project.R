@@ -59,11 +59,10 @@ ggplot() +
       alpha = ".1")
     ) +
   coord_equal()+
-  facet_wrap(~season,ncol = 2)
+  facet_wrap(~season,ncol = 2) +
   guides(fill = "none") +
   labs(
-    title = "Reef Ray Australia Sightings",
-    caption="Lighter colors indicate denser sightings"
+    title = "Reef Ray Australia Sightings"
   )
 
 ggsave("Reef_Ray_Australia.png",
@@ -88,11 +87,10 @@ ggplot() +
       alpha = ".1")
     ) +
   coord_equal()+
-  facet_wrap(~season,ncol = 2)
+  facet_wrap(~season,ncol = 2) +
   guides(fill = "none") +
   labs(
-    title = "Oceanic Ray Global Sightings",
-    caption="Lighter colors indicate denser sightings"
+    title = "Oceanic Ray Global Sightings"
   )
 
 ggsave("Oceanic_Ray.png",
@@ -117,11 +115,10 @@ ggplot() +
       alpha = ".1")
     ) +
   coord_equal()+
-  facet_wrap(~breeding,ncol = 2)
+  facet_wrap(~breeding,ncol = 2) +
   guides(fill = "none") +
   labs(
-    title = "Breeding Season Sightings",
-    caption="Lighter colors indicate denser sightings"
+    title = "Breeding Season Sightings"
   )
 
 ggsave("Reef_Ray_Breeding.png",
@@ -146,11 +143,10 @@ ggplot() +
       alpha = ".1")
     ) +
   coord_equal()+
-  facet_wrap(~season,ncol = 2)
+  facet_wrap(~season,ncol = 2) +
   guides(fill = "none") +
   labs(
-    title = "Reef Ray Global Sightings",
-    caption="Lighter colors indicate denser sightings"
+    title = "Reef Ray Global Sightings"
   )
 
 ggsave("Reef_Ray_Global.png",
